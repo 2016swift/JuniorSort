@@ -1,28 +1,24 @@
 package com.one;
 
 /**
- * 归并排序
+ * 自底向上的归并排序
  * @author lys
  *
  */
 @SuppressWarnings("rawtypes")
-public class Merge extends Example{
-	
-	
-	private static Comparable[] aux;
+public class MergeBU extends Example{
+
+	private static Comparable[] aux; //辅助数组
 	
 	public static void sort(Comparable[] a){
-		aux = new Comparable[a.length];
-		sort(a, 0, a.length-1);
-	}
-
-	private static void sort(Comparable[] a, int lo, int hi) {
-		//将数组a[lo...hi]排序
-		if(hi <= lo) return;
-		int mid = lo + (hi-lo)/2;
-		sort(a, lo, mid);		//左半边排序
-		sort(a, mid+1, hi);		//右半边排序
-		merge(a, lo, mid, hi);	//归并结果
+		//进行logN次两两归并
+		int N = a.length;
+		aux = new Comparable[N];
+		for (int sz = 1; sz < N; sz+=sz) {   			//sz子数组大小
+			for (int lo = 0; lo < N-sz; lo+=sz+sz) {	//lo子数组索引
+				merge(a, lo, lo+sz-1, Math.min(lo+sz+sz-1, N-1));
+			}
+		}
 	}
 	
 	public static void merge(Comparable[] a, int lo, int mid, int hi){
