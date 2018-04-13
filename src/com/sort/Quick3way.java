@@ -1,4 +1,4 @@
-package com.one;
+package com.sort;
 
 /**
  * 三向切分的快速排序

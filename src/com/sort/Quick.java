@@ -1,4 +1,4 @@
-package com.one;
+package com.sort;
 
 /**
  * 快速排序

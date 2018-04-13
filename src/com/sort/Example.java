@@ -1,4 +1,4 @@
-package com.one;
+package com.sort;
 
 /**
  * 排序类算法模板

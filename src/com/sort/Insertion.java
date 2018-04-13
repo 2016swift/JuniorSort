@@ -1,4 +1,4 @@
-package com.one;
+package com.sort;
 
 public class Insertion extends Example{
 	
